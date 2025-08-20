@@ -1,0 +1,32 @@
+#include <stdio.h>
+int main()
+{
+    FILE *file1,*file2;
+    file1 = fopen ("Average.txt","w");
+    file2 = fopen ("Average.txt","r");
+    float a,b,c,sum,avg;
+    char ch;
+    if (file1==NULL)
+        printf ("The file does not exist.");
+    else
+    {
+        printf ("Enter three numbers: ");
+        scanf ("%f %f %f",&a,&b,&c);
+        sum=a+b+c;
+        avg=sum/3;
+        fprintf (file1,"The average of three numbers is: %.2f\n",avg);
+        fclose (file1);
+    }
+    if (file2==NULL)
+        printf ("The file does not exist.");
+    else
+    {
+        while (!feof (file2))
+        {
+            ch = fgetc (file2);
+            printf ("%c",ch);
+        }
+        fclose (file2);
+    }
+    return 0;
+}
